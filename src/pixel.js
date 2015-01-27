@@ -27,37 +27,7 @@ window.onload = function() {
     }
   };
 
-  var baseHue = randomInt(360);
-
-  var colorFunctions = [
-    function randomHue() {
-      var hue = randomInt(360);
-      return new Color(hue,Math.random(),1);
-    },
-    function randomGreyscale() {
-      return new Color(0,0,Math.random());
-    },
-    function randomBlackAndWhite() {
-      return new Color(0,0,randomInt(2));
-    },
-    function randomMonochrome() {
-      return new Color(baseHue,Math.random(),Math.random());
-    },
-    function randomShades() {
-      return new Color(baseHue,1,Math.random());
-    }
-  ];
-
   var colorFunction = sampleArray(colorFunctions);
-
-  var evolutionFunctions = [
-    function(color) {
-      color.rotate();
-    },
-    function() {
-
-    }
-  ];
 
   var evolutionFunction = sampleArray(evolutionFunctions);
 
