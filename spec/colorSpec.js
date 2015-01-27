@@ -21,5 +21,37 @@ describe('color', function() {
       color.rotate();
       expect(color.h).toBe(1);
     });
-  })
+  });
+
+  describe('desaturate', function() {
+    it('desaturates', function() {
+      var color = new Color(0,1,1);
+      color.desaturate();
+
+      expect(color.s).toBeLessThan(1);
+    });
+
+    it('stops at zero', function() {
+      var color = new Color(0,0,1);
+      color.desaturate();
+
+      expect(color.s).toBe(0);
+    });
+  });
+
+  describe('darken', function() {
+    it('darkens', function() {
+      var color = new Color(0,1,1);
+      color.darken();
+
+      expect(color.v).toBeLessThan(1);
+    });
+
+    it('stops at zero', function() {
+      var color = new Color(0,1,0);
+      color.darken();
+
+      expect(color.v).toBe(0);
+    });
+  });
 });

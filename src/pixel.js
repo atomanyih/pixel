@@ -31,8 +31,12 @@ window.onload = function() {
 
   var evolutionFunction = sampleArray(evolutionFunctions);
 
+  var numGuys = randomInt(50) + 3;
+
+  console.log(colorFunction.name, evolutionFunction.name, numGuys);
+
   var ppl = [];
-  for(var i = 0; i < 50; i++) {
+  for(var i = 0; i < numGuys; i++) {
     var color = colorFunction();
     ppl.push(Guy(canvas.width/2, 100, color, evolutionFunction))
   }
@@ -43,7 +47,6 @@ window.onload = function() {
   }
 
   function main() {
-    //canvas.clear();
     ppl.forEach(function(person) {
       person.move();
       person.evolve();
@@ -53,5 +56,6 @@ window.onload = function() {
     animate(main);
   }
 
+  canvas.clear();
   animate(main);
 };

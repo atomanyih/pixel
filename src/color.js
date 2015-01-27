@@ -4,7 +4,7 @@ function Color(h,s,v){
   this.v = v;
 
   this.toRgb = function() {
-    var chroma = this.v * s;
+    var chroma = this.v * this.s;
     var hextant = this.h / 60;
     var x = chroma * (1 - Math.abs(hextant % 2 - 1));
     var m = this.v - chroma;
@@ -60,6 +60,22 @@ function Color(h,s,v){
   };
 
   this.rotate = function() {
-    this.h = (this.h + 1)%360;
+    this.h = (this.h + 0.2)%360;
+  };
+
+  this.desaturate = function() {
+    if(this.s > 0){
+      this.s = (this.s - 0.001);
+    } else {
+      this.s = 0;
+    }
+  };
+
+  this.darken = function() {
+    if(this.v > 0){
+      this.v = (this.v - 0.001);
+    } else {
+      this.v = 0;
+    }
   };
 }
