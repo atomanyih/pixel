@@ -4,6 +4,8 @@ function Canvas(elementId) {
   var width = canvas.width;
   var height = canvas.height;
 
+  context.imageSmoothingEnabled= false;
+
   this.clear = function clear() {
     context.clearRect(0,0,width,height);
   };

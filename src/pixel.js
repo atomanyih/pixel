@@ -24,8 +24,28 @@ window.onload = function() {
     }
   };
 
-  var guy = Guy(100, 100, 'rgba(0,0,0,.2)');
-  var redGuy = Guy(100, 100, 'rgba(255,0,0,.2)');
+  function randomInt(max) {
+    return Math.floor(Math.random()*max);
+  }
+
+  var ppl = [];
+
+  function randomColor() {
+    var r = randomInt(255);
+    var g = randomInt(255 - r);
+    var b = randomInt(255 - g - r);
+
+    var color = 'rgb(' + r + ',' + g + ',' + b + ')';
+    return color;
+  }
+
+  for(var i = 0; i < 50; i++) {
+    var color = randomColor();
+    ppl.push(Guy(100, 100, color))
+  }
+  //ppl.push(Guy(100, 100, 'rgb(255,0,0'));
+  //ppl.push(Guy(100, 100, 'rgb(0,255,0'));
+  //ppl.push(Guy(100, 100, 'rgb(0,0,255'));
 
   function animate(loopFn) {
     window.requestAnimationFrame(loopFn);
@@ -33,10 +53,11 @@ window.onload = function() {
   }
 
   function main() {
-    guy.draw(canvas);
-    guy.move();
-    redGuy.draw(canvas);
-    redGuy.move();
+    canvas.clear();
+    ppl.forEach(function(person) {
+      person.move();
+      person.draw(canvas);
+    });
 
     animate(main);
   }
