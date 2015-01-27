@@ -1,17 +1,10 @@
 window.onload = function() {
-  var canvas = document.getElementById('view');
-  var ctx = canvas.getContext('2d');
-  var width = canvas.width;
-  var height = canvas.height;
+  var canvas = new Canvas('view');
 
-  ctx.fillStyle = 'rgb(0,0,0)';
-  ctx.fillRect(0, 0, width, height);
-
-  var Guy = function(x, y, color) {
+  var Guy = function(x, y) {
     return {
-      draw: function(context) {
-        ctx.fillStyle = color;
-        context.fillRect(x, y, 1, 1);
+      draw: function(canvas) {
+        canvas.drawPixel(x, y);
       },
       move: function() {
         var r = Math.random();
@@ -28,10 +21,10 @@ window.onload = function() {
     }
   };
 
-  var guy = Guy(width/3, height/2, 'rgba(255,255,255,0.1)');
+  var guy = Guy(100, 100);
 
   function main() {
-    guy.draw(ctx);
+    guy.draw(canvas);
     guy.move();
 
     window.requestAnimationFrame(main);
