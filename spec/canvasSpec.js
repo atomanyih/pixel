@@ -65,7 +65,7 @@ describe('canvas', function() {
       expect(surroundings.down).toBe(0);
     });
 
-    it('?', function() {
+    xit('?', function() {
       // o - -
       // - - -
       // - - -
