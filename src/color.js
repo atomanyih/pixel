@@ -1,5 +1,5 @@
-Color = {
-  hsv: function hsv(h, s, v) {
+function Color(h,s,v){
+  this.toRgb = function() {
     var chroma = v * s;
     var hextant = h / 60;
     var x = chroma * (1 - Math.abs(hextant % 2 - 1));
@@ -54,4 +54,4 @@ Color = {
 
     return 'rgb(' + r + ',' + g + ',' + b + ')';
   }
-};
+}

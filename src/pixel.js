@@ -33,19 +33,19 @@ window.onload = function() {
   var colorFunctions = [
     function randomHue() {
       var hue = randomInt(360);
-      return Color.hsv(hue,Math.random(),1);
+      return new Color(hue,Math.random(),1);
     },
     function randomGreyscale() {
-      return Color.hsv(0,0,Math.random());
+      return new Color(0,0,Math.random());
     },
     function randomBlackAndWhite() {
-      return Color.hsv(0,0,randomInt(2));
+      return new Color(0,0,randomInt(2));
     },
     function randomMonochrome() {
-      return Color.hsv(baseHue,Math.random(),Math.random());
+      return new Color(baseHue,Math.random(),Math.random());
     },
     function randomShades() {
-      return Color.hsv(baseHue,1,Math.random());
+      return new Color(baseHue,1,Math.random());
     }
   ];
 
