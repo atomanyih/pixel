@@ -1,7 +1,7 @@
 window.onload = function() {
   var canvas = new Canvas('view');
 
-  var Guy = function(x, y, color) {
+  var Guy = function(x, y, color, evolveFunction) {
     return {
       draw: function(canvas) {
         canvas.drawPixel(x, y, color);
@@ -20,13 +20,12 @@ window.onload = function() {
         } else {
           y++;
         }
+      },
+      evolve: function() {
+        evolveFunction(color);
       }
     }
   };
-
-  function randomInt(max) {
-    return Math.floor(Math.random()*max);
-  }
 
   var baseHue = randomInt(360);
 
@@ -49,12 +48,23 @@ window.onload = function() {
     }
   ];
 
-  var colorFunction = colorFunctions[randomInt(colorFunctions.length)];
+  var colorFunction = sampleArray(colorFunctions);
+
+  var evolutionFunctions = [
+    function(color) {
+      color.rotate();
+    },
+    function() {
+
+    }
+  ];
+
+  var evolutionFunction = sampleArray(evolutionFunctions);
 
   var ppl = [];
   for(var i = 0; i < 50; i++) {
     var color = colorFunction();
-    ppl.push(Guy(canvas.width/2, 100, color))
+    ppl.push(Guy(canvas.width/2, 100, color, evolutionFunction))
   }
 
   function animate(loopFn) {
@@ -66,6 +76,7 @@ window.onload = function() {
     //canvas.clear();
     ppl.forEach(function(person) {
       person.move();
+      person.evolve();
       person.draw(canvas);
     });
 
