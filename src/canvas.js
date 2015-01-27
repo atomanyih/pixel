@@ -1,13 +1,14 @@
 function Canvas(elementId) {
   var canvas = document.getElementById(elementId);
   var context = canvas.getContext('2d');
-  var width = canvas.width;
-  var height = canvas.height;
 
-  context.imageSmoothingEnabled= false;
+  this.height = canvas.height;
+  this.width = canvas.width;
+
+  context.imageSmoothingEnabled = false;
 
   this.clear = function clear() {
-    context.clearRect(0,0,width,height);
+    context.clearRect(0,0,this.width,this.height);
   };
 
   this.drawPixel = function fillPixel(x,y,color) {

@@ -28,17 +28,33 @@ window.onload = function() {
     return Math.floor(Math.random()*max);
   }
 
+  var baseHue = randomInt(360);
+
+  var colorFunctions = [
+    function randomHue() {
+      var hue = randomInt(360);
+      return Color.hsv(hue,Math.random(),1);
+    },
+    function randomGreyscale() {
+      return Color.hsv(0,0,Math.random());
+    },
+    function randomBlackAndWhite() {
+      return Color.hsv(0,0,randomInt(2));
+    },
+    function randomMonochrome() {
+      return Color.hsv(baseHue,Math.random(),Math.random());
+    },
+    function randomShades() {
+      return Color.hsv(baseHue,1,Math.random());
+    }
+  ];
+
+  var colorFunction = colorFunctions[randomInt(colorFunctions.length)];
+
   var ppl = [];
-
-  function randomColor() {
-    var hue = randomInt(360);
-    return Color.hsv(hue,Math.random(),1);
-    //return Color.hsv(0,0,Math.random());
-  }
-
   for(var i = 0; i < 50; i++) {
-    var color = randomColor();
-    ppl.push(Guy(100, 100, color))
+    var color = colorFunction();
+    ppl.push(Guy(canvas.width/2, 100, color))
   }
 
   function animate(loopFn) {
