@@ -31,7 +31,7 @@ window.onload = function() {
 
   var evolutionFunction = sampleArray(evolutionFunctions);
 
-  var numGuys = randomInt(50) + 3;
+  var numGuys = 50;//randomInt(50) + 3;
 
   console.log(colorFunction.name, evolutionFunction.name, numGuys);
 
@@ -56,6 +56,6 @@ window.onload = function() {
     animate(main);
   }
 
-  canvas.clear();
+  //canvas.clear();
   animate(main);
 };

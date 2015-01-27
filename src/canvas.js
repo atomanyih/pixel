@@ -7,6 +7,15 @@ function Canvas(elementId) {
 
   context.imageSmoothingEnabled = false;
 
+  context.fillStyle = 'black';
+  //context.fillRect(this.width/2 - 50, this.height/3 - 50, 100, 100);
+
+  context.arc(this.width/2, this.height/3, 50, 0, 2 * Math.PI, false);
+  context.fill();
+
+  //context.font = '100px sans-serif';
+  //context.fillText('sup', this.width/2 - 80, this.height/3);
+
   this.clear = function clear() {
     context.clearRect(0, 0, this.width, this.height);
   };

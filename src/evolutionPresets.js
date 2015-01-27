@@ -15,8 +15,5 @@ function doNothing() {
 }
 
 var evolutionFunctions = [
-  rotateColor,
-  //desaturateColor,
-  //darkenColor,
   doNothing
 ];
