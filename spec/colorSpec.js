@@ -14,4 +14,12 @@ describe('color', function() {
       expect(color.toRgb()).toBe('rgb(0,0,255)');
     });
   });
+
+  describe('rotate', function() {
+    it('rotates the hue', function() {
+      var color = new Color(0,1,1);
+      color.rotate();
+      expect(color.h).toBe(1);
+    });
+  })
 });

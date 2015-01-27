@@ -1,9 +1,13 @@
 function Color(h,s,v){
+  this.h = h;
+  this.s = s;
+  this.v = v;
+
   this.toRgb = function() {
-    var chroma = v * s;
-    var hextant = h / 60;
+    var chroma = this.v * s;
+    var hextant = this.h / 60;
     var x = chroma * (1 - Math.abs(hextant % 2 - 1));
-    var m = v - chroma;
+    var m = this.v - chroma;
 
     var r, g, b;
     switch (Math.floor(hextant)) {
@@ -53,5 +57,9 @@ function Color(h,s,v){
     b = Math.floor(255*b);
 
     return 'rgb(' + r + ',' + g + ',' + b + ')';
-  }
+  };
+
+  this.rotate = function() {
+    this.h = (this.h + 1)%360;
+  };
 }
