@@ -7,14 +7,19 @@ function Canvas(elementId) {
 
   context.imageSmoothingEnabled = false;
 
-  context.fillStyle = 'black';
-  //context.fillRect(this.width/2 - 50, this.height/3 - 50, 100, 100);
+  this.fitToWindow = function fitToWindow() {
+    this.height = window.innerHeight;
+    this.width = window.innerWidth;
 
-  context.arc(this.width/2, this.height/3, 50, 0, 2 * Math.PI, false);
-  context.fill();
+    canvas.height = this.height;
+    canvas.width = this.width;
+  };
 
-  //context.font = '100px sans-serif';
-  //context.fillText('sup', this.width/2 - 80, this.height/3);
+  this.drawCircle = function drawCircle() {
+    context.fillStyle = 'black';
+    context.arc(this.width/2, this.height/3, 50, 0, 2 * Math.PI, false);
+    context.fill();
+  };
 
   this.clear = function clear() {
     context.clearRect(0, 0, this.width, this.height);

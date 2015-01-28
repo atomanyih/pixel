@@ -1,5 +1,7 @@
 window.onload = function() {
   var canvas = new Canvas('view');
+  canvas.fitToWindow();
+  canvas.drawCircle();
 
   var Guy = function(x, y, color, evolveFunction) {
     return {
@@ -41,11 +43,6 @@ window.onload = function() {
     ppl.push(Guy(canvas.width/2, 100, color, evolutionFunction))
   }
 
-  function animate(loopFn) {
-    window.requestAnimationFrame(loopFn);
-    //setInterval(loopFn, 1)
-  }
-
   function main() {
     ppl.forEach(function(person) {
       person.move();
@@ -53,9 +50,8 @@ window.onload = function() {
       person.draw(canvas);
     });
 
-    animate(main);
+    window.requestAnimationFrame(main);
   }
 
-  //canvas.clear();
-  animate(main);
+  window.requestAnimationFrame(main);
 };
