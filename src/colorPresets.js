@@ -1,4 +1,4 @@
-var baseHue = randomInt(360);
+var baseHue;
 
 function randomHue() {
   var hue = randomInt(360);
@@ -11,6 +11,10 @@ function randomGreyscale() {
 
 function randomBlackAndWhite() {
   return new Color(0,0,randomInt(2));
+}
+
+function randomColorAndBlack() {
+  return new Color(baseHue,1,randomInt(2));
 }
 
 function randomMonochrome() {
@@ -26,5 +30,6 @@ var colorFunctions = [
   randomGreyscale,
   randomBlackAndWhite,
   randomMonochrome,
-  randomShades
+  randomShades,
+  randomColorAndBlack
 ];

@@ -32,6 +32,7 @@ window.onload = function() {
   var ppl;
 
   function init() {
+    baseHue = randomInt(360);
     canvas.clear();
     canvas.drawCircle();
 
