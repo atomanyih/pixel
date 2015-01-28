@@ -40,7 +40,8 @@ window.onload = function() {
   var ppl = [];
   for(var i = 0; i < numGuys; i++) {
     var color = colorFunction();
-    ppl.push(Guy(canvas.width/2, 100, color, evolutionFunction))
+    ppl.push(Guy(canvas.width/2, 100, color, evolutionFunction));
+    //ppl.push(Guy(canvas.width/2+i - numGuys/2, canvas.height/2, color, evolutionFunction))
   }
 
   function main() {
