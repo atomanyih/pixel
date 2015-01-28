@@ -17,7 +17,7 @@ function Canvas(elementId) {
 
   this.drawCircle = function drawCircle() {
     context.fillStyle = 'black';
-    context.arc(this.width/2, this.height/3, 50, 0, 2 * Math.PI, false);
+    context.arc(this.width / 2, this.height / 3, 50, 0, 2 * Math.PI, false);
     context.fill();
   };
 
@@ -54,4 +54,9 @@ function Canvas(elementId) {
       down: alphaAt(1, 2) / 255
     }
   };
+
+  this.fade = function fade() {
+    context.fillStyle = 'rgba(0,0,0,.1)';
+    context.fillRect(0, 0, this.width, this.height);
+  }
 }
