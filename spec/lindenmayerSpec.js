@@ -1,29 +1,11 @@
 describe('lindenmayer', function() {
   describe('generate', function() {
-    it('returns state after n iterations', function() {
-      var start = ['A'];
-      var rules = {'A': ['A', 'A']};
-      var l = new Lindenmayer(start, rules);
-
-      expect(l.next()).toEqual(['A', 'A']);
-    });
-
-    it('leaves strings without rules', function() {
-      var start = ['A', 'B'];
-      var rules = {'B': ['B', 'A']};
-      var l = new Lindenmayer(start, rules);
-
-      expect(l.next()).toEqual(['A', 'B', 'A']);
-    });
-  });
-
-  describe('generate', function() {
     it('returns result after n steps', function() {
       var start = ['A'];
       var rules = {'A': ['B', 'A']};
-      var l = new Lindenmayer(start, rules);
+      var l = new Lindenmayer(start, rules, 5);
 
-      expect(l.generate(5)).toEqual(['B', 'B', 'B', 'B', 'B', 'A']);
+      expect(l.generate()).toEqual(['B', 'B', 'B', 'B', 'B', 'A']);
     });
   });
 

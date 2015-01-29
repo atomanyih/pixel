@@ -1,4 +1,4 @@
-function Lindenmayer(start, rules) {
+function Lindenmayer(start, rules, depth) {
   var state = start;
 
   function advance(state, rules) {
@@ -12,11 +12,7 @@ function Lindenmayer(start, rules) {
     return nextState;
   }
 
-  this.next = function next() {
-    return advance(state, rules);
-  };
-
-  this.generate = function generate(depth) {
+  this.generate = function generate() {
     var nextState = state;
 
     for(var i = 0; i < depth; i++) {
@@ -27,9 +23,67 @@ function Lindenmayer(start, rules) {
   };
 }
 
+Lindenmayer.dragonCurve = function() {
+  var start = ['F', 'X'];
+  var rules = {
+    'X': ['X', '+', 'Y', 'F', '+'],
+    'Y': ['-', 'F', 'X', '-', 'Y']
+  };
+
+  return new Lindenmayer(start, rules, 12);
+};
+
+Lindenmayer.kochCurve = function() {
+  var start = ['F'];
+  var rules = {
+    'F': ['F', '+', 'F', '-', 'F', '-', 'F', '+', 'F']
+  };
+
+  return new Lindenmayer(start, rules, 5);
+};
+
+Lindenmayer.hilbertCurve = function() {
+  var start = ['A'];
+  var rules = {
+    'A': ['-','B','F','+','A','F','A','+','F','B','-'],
+    'B': ['+','A','F','-','B','F','B','-','F','A','+']
+  };
+
+  return new Lindenmayer(start, rules, 7);
+};
+
+Lindenmayer.carpet = function() {
+  var start = ['F','+','F','+','F','+','F'];
+  var rules = {
+    'F': ['F', 'F', '+', 'F', '+', 'F', '+', 'F', '+', 'F', 'F']
+  };
+
+  return new Lindenmayer(start, rules, 4);
+};
+
+Lindenmayer.thing = function() {
+  var start = ['F','+','F','+','F','+','F'];
+  var rules = {
+    'F': ['F','F','+','F','+','F','+','F','+','F','+','F','-','F']
+  };
+
+  return new Lindenmayer(start, rules, 4);
+}
+
+Lindenmayer.something = function() {
+  var start = ['F'];
+  var rules = {
+    'F': ['F','+','F','-','F','-','F','-','G','+','F','+','F','+','F','-','F'],
+    'G': ['G','G','G']
+  };
+
+  return new Lindenmayer(start, rules, 4);
+};
+
 function Dude(x, y) {
   this.x = x;
   this.y = y;
+  this.color = new Color(0,1,1);
 
   var direction = 0;
   var self = this;
@@ -62,6 +116,6 @@ function Dude(x, y) {
   };
 
   this.draw = function draw(canvas) {
-    canvas.drawPixel(this.x, this.y, new Color(0,1,1));
+    canvas.drawPixel(this.x, this.y, this.color);
   }
 }

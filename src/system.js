@@ -2,27 +2,27 @@ window.onload = function() {
   var canvas = new Canvas('view');
   canvas.fitToWindow();
 
-  //var l = ['F'];
-  //var rules = {
-  //  'F': ['F', '+', 'F', '-', 'F', '-', 'F', '+', 'F']
-  //};
+  var system = (sampleArray(
+    [
+      Lindenmayer.dragonCurve,
+      Lindenmayer.kochCurve,
+      Lindenmayer.hilbertCurve,
+      Lindenmayer.carpet,
+      Lindenmayer.thing,
+      Lindenmayer.something
+    ]
+  ))();
 
-  var l = ['F', 'X'];
-  var rules = {
-    'X': ['X', '+', 'Y', 'F', '+'],
-    'Y': ['-', 'F', 'X', '-', 'Y']
-  };
-
-  var system = new Lindenmayer(l, rules);
-  l = system.generate(12);
+  var l = system.generate();
 
   console.log(l);
 
-  var dude = new Dude(canvas.width/2,100);
+  var dude = new Dude(canvas.width / 2, 100);
+  dude.draw(canvas);
 
   function main() {
     var action = l.pop();
-    switch(action) {
+    switch (action) {
       case 'F':
         dude.moveForward();
         dude.draw(canvas);
@@ -30,6 +30,7 @@ window.onload = function() {
         dude.moveForward();
         dude.draw(canvas);
 
+        dude.color.rotate();
         break;
       case '-':
         dude.turnLeft();
@@ -38,7 +39,8 @@ window.onload = function() {
         dude.turnRight();
         break;
     }
-    window.requestAnimationFrame(main)
+    //window.requestAnimationFrame(main)
+    setTimeout(main, 1);
   }
 
   main();
