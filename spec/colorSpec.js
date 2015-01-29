@@ -19,7 +19,7 @@ describe('color', function() {
     it('rotates the hue', function() {
       var color = new Color(0,1,1);
       color.rotate();
-      expect(color.h).toBe(1);
+      expect(color.h).toBe(0.2);
     });
   });
 

@@ -78,4 +78,19 @@ describe('canvas', function() {
       expect(surroundings.down).toBe(0);
     });
   });
+
+  describe('fade', function() {
+    it('draws a transparent black rectangle', function() {
+      var canvasElement = document.getElementById('test-canvas');
+      var context = jasmine.createSpyObj('context', ['fillRect', 'fillStyle']);
+
+      spyOn(canvasElement, 'getContext').and.returnValue(context);
+
+      var canvas = new Canvas('test-canvas');
+      canvas.fade();
+
+      expect(context.fillStyle).toBe('rgba(0,0,0,.1)');
+      expect(context.fillRect).toHaveBeenCalledWith(0,0,100,100);
+    });
+  });
 });
