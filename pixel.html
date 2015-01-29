@@ -9,23 +9,14 @@
 
   <script src="src/colorPresets.js"></script>
   <script src="src/evolutionPresets.js"></script>
-  <script src="src/lindenmayer.js"></script>
 
-  <script src="src/system.js"></script>
   <script src="src/pixel.js"></script>
 </head>
 
 <body style="background-color: black; overflow: hidden">
 <canvas id="view" width="1000" height="1000"></canvas>
 <script>
-  switch(randomInt(2)) {
-    case 0:
-      pixel();
-      break;
-    default:
-      system();
-      break;
-  }
+  pixel();
 </script>
 </body>
 </html>

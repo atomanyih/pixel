@@ -1,25 +1,31 @@
-window.onload = function() {
+function system() {
   var canvas = new Canvas('view');
   canvas.fitToWindow();
-  canvas.setKaleidoscope(3 + randomInt(4));
 
-  var system = (sampleArray(
-    [
-      Lindenmayer.dragonCurve,
-      Lindenmayer.kochCurve,
-      Lindenmayer.hilbertCurve,
-      Lindenmayer.carpet,
-      Lindenmayer.thing,
-      Lindenmayer.something
-    ]
-  ))();
+  var l, system, dude;
 
-  var l = system.generate();
+  function init() {
+    //canvas.clear();
+    canvas.setKaleidoscope(4 + randomInt(4));
 
-  console.log(l);
+    system = (sampleArray(
+      [
+        Lindenmayer.dragonCurve,
+        Lindenmayer.kochCurve,
+        Lindenmayer.hilbertCurve,
+        Lindenmayer.carpet,
+        Lindenmayer.thing,
+        Lindenmayer.something
+      ]
+    ))();
 
-  var dude = new Dude(Math.floor(canvas.width / 2), Math.floor(canvas.height / 2));
-  dude.draw(canvas);
+    l = system.generate();
+
+    console.log(l);
+
+    dude = new Dude(Math.floor(canvas.width / 2), Math.floor(canvas.height / 2));
+    dude.draw(canvas);
+  }
 
   function main() {
     var action = l.pop();
@@ -39,10 +45,14 @@ window.onload = function() {
       case '+':
         dude.turnRight();
         break;
+      case undefined:
+        init();
+        break;
     }
     //window.requestAnimationFrame(main)
     setTimeout(main, 1);
   }
 
+  init();
   main();
-};
+}
