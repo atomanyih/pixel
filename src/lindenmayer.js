@@ -83,7 +83,8 @@ Lindenmayer.something = function() {
 function Dude(x, y) {
   this.x = x;
   this.y = y;
-  this.color = new Color(0,1,1);
+  this.color = new Color(randomInt(360),1,1);
+  this.size = randomInt(2000);
 
   var direction = 0;
   var self = this;
@@ -116,6 +117,8 @@ function Dude(x, y) {
   };
 
   this.draw = function draw(canvas) {
-    canvas.drawPixel(this.x, this.y, this.color);
+    canvas.drawPixel(this.x, this.y, this.color, Math.ceil(this.size));
+
+    this.size = this.size * .999
   }
 }

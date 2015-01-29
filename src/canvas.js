@@ -26,14 +26,16 @@ function Canvas(elementId) {
     context.clearRect(0, 0, this.width, this.height);
   };
 
-  this.drawPixel = function fillPixel(x, y, color) {
+  this.drawPixel = function fillPixel(x, y, color, size) {
+    size = size || 1;
+
     if (color) {
       context.fillStyle = color.toRgb();
     } else {
       context.fillStyle = 'rgb(0,0,0)';
     }
 
-    context.fillRect(x, y, 1, 1);
+    context.fillRect(x, y, size, size);
 
     context.save();
 
@@ -46,7 +48,7 @@ function Canvas(elementId) {
       context.translate(centerX, centerY);
       context.rotate((Math.PI/180)*360/numSections);
       context.translate(-centerX, -centerY);
-      context.fillRect(x, y, 1, 1);
+      context.fillRect(x, y, size, size);
     }
 
     for(var i = 1; i < numSections; i++) {
