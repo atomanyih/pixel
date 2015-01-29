@@ -93,4 +93,8 @@ describe('canvas', function() {
       expect(context.fillRect).toHaveBeenCalledWith(0,0,100,100);
     });
   });
+
+  describe('filter', function() {
+    it('calls the function on ea')
+  });
 });

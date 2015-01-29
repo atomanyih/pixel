@@ -55,15 +55,21 @@ function pixel() {
   }
 
   function main() {
+    var done = false;
+
     ppl.forEach(function(person) {
       person.move();
       person.evolve();
       person.draw(canvas);
 
       if (person.y > canvas.height) {
-        restart();
+        done = true;
       }
     });
+
+    if(done) {
+      restart();
+    }
 
     window.requestAnimationFrame(main);
   }
