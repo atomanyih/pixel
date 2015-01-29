@@ -34,6 +34,7 @@ window.onload = function() {
   function init() {
     baseHue = randomInt(360);
     canvas.clear();
+    canvas.setKaleidoscope(1 + randomInt(7));
     canvas.drawCircle();
 
     var colorFunction = sampleArray(colorFunctions);

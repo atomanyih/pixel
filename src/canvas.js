@@ -1,6 +1,7 @@
 function Canvas(elementId) {
   var canvas = document.getElementById(elementId);
   var context = canvas.getContext('2d');
+  var partitions = 1;
 
   this.height = canvas.height;
   this.width = canvas.width;
@@ -33,6 +34,26 @@ function Canvas(elementId) {
     }
 
     context.fillRect(x, y, 1, 1);
+
+    context.save();
+
+    self = this;
+    centerX = Math.floor(self.width/2);
+    centerY = Math.floor(self.height/2);
+    numSections = partitions;
+
+    function drawPartition() {
+      context.translate(centerX, centerY);
+      context.rotate((Math.PI/180)*360/numSections);
+      context.translate(-centerX, -centerY);
+      context.fillRect(x, y, 1, 1);
+    }
+
+    for(var i = 1; i < numSections; i++) {
+      drawPartition();
+    }
+
+    context.restore();
   };
 
   this.surroundings = function surroundings(x, y) {
@@ -58,5 +79,9 @@ function Canvas(elementId) {
   this.fade = function fade() {
     context.fillStyle = 'rgba(0,0,0,.1)';
     context.fillRect(0, 0, this.width, this.height);
-  }
+  };
+
+  this.setKaleidoscope = function setKaleidoscope(numPartitions) {
+    partitions = numPartitions;
+  };
 }

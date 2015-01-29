@@ -1,6 +1,7 @@
 window.onload = function() {
   var canvas = new Canvas('view');
   canvas.fitToWindow();
+  canvas.setKaleidoscope(3 + randomInt(4));
 
   var system = (sampleArray(
     [
@@ -17,7 +18,7 @@ window.onload = function() {
 
   console.log(l);
 
-  var dude = new Dude(canvas.width / 2, 100);
+  var dude = new Dude(Math.floor(canvas.width / 2), Math.floor(canvas.height / 2));
   dude.draw(canvas);
 
   function main() {
