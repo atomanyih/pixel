@@ -1,4 +1,4 @@
-window.onload = function() {
+function system() {
   var canvas = new Canvas('view');
   canvas.fitToWindow();
 
@@ -55,4 +55,4 @@ window.onload = function() {
 
   init();
   main();
-};
+}

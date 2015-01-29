@@ -1,1 +1,31 @@
-pixel.html
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>pixel</title>
+  <script src="src/random.js"></script>
+  <script src="src/canvas.js"></script>
+  <script src="src/color.js"></script>
+
+  <script src="src/colorPresets.js"></script>
+  <script src="src/evolutionPresets.js"></script>
+  <script src="src/lindenmayer.js"></script>
+
+  <script src="src/system.js"></script>
+  <script src="src/pixel.js"></script>
+</head>
+
+<body style="background-color: black; overflow: hidden">
+<canvas id="view" width="1000" height="1000"></canvas>
+<script>
+  switch(randomInt(2)) {
+    case 0:
+      pixel();
+      break;
+    default:
+      system();
+      break;
+  }
+</script>
+</body>
+</html>
