@@ -40,18 +40,18 @@ function Canvas(elementId) {
     context.save();
 
     self = this;
-    centerX = Math.floor(self.width/2);
-    centerY = Math.floor(self.height/2);
+    centerX = Math.floor(self.width / 2);
+    centerY = Math.floor(self.height / 2);
     numSections = partitions;
 
     function drawPartition() {
       context.translate(centerX, centerY);
-      context.rotate((Math.PI/180)*360/numSections);
+      context.rotate((Math.PI / 180) * 360 / numSections);
       context.translate(-centerX, -centerY);
       context.fillRect(x, y, size, size);
     }
 
-    for(var i = 1; i < numSections; i++) {
+    for (var i = 1; i < numSections; i++) {
       drawPartition();
     }
 
@@ -76,6 +76,36 @@ function Canvas(elementId) {
       up: alphaAt(1, 0) / 255,
       down: alphaAt(1, 2) / 255
     }
+  };
+
+  this.alphaAt = function alphaAt(x, y) {
+    var imageData = context.getImageData(x, y, 1, 1);
+
+    return imageData.data[3] / 255;
+  };
+
+  this.clearPixel = function clearPixel(x, y) {
+    context.clearRect(x, y, 1, 1);
+
+    context.save();
+
+    self = this;
+    centerX = Math.floor(self.width / 2);
+    centerY = Math.floor(self.height / 2);
+    numSections = partitions;
+
+    function drawPartition() {
+      context.translate(centerX, centerY);
+      context.rotate((Math.PI / 180) * 360 / numSections);
+      context.translate(-centerX, -centerY);
+      context.clearRect(x, y, 1, 1);
+    }
+
+    for (var i = 1; i < numSections; i++) {
+      drawPartition();
+    }
+
+    context.restore();
   };
 
   this.fade = function fade() {
