@@ -6,6 +6,9 @@ function system() {
 
   function init() {
     //canvas.clear();
+    canvas.fade();
+    canvas.fade();
+    canvas.fade();
     canvas.setKaleidoscope(4 + randomInt(4));
 
     system = (sampleArray(
@@ -37,7 +40,7 @@ function system() {
         dude.moveForward();
         dude.draw(canvas);
 
-        dude.color.rotate();
+        dude.evolve();
         break;
       case '-':
         dude.turnLeft();
